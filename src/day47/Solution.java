@@ -12,28 +12,30 @@ public class Solution {
 	
 	public static int solution(int[] number) {
 		HashSet<ArrayList<Integer>> com = new HashSet<>();
+		int len = number.length;
 		
-		for(int i=0; i<number.length; ++i) {
-			ArrayList<Integer> listCom = new ArrayList<>();
-			for(int j=0; j<3; ++j) {
-				try {
-					listCom.add(number[i+j]);
-				}catch(ArrayIndexOutOfBoundsException e) {
-					if(i+j == 5) listCom.add(number[0]);
-					else if(i+j == 6) listCom.add(number[1]);
+		for(int i=0; i<len; ++i) {  //2
+			
+			for(int j=i+1; j<len; ++j) {  //3
+				for(int k=j+1; k<len; ++k) { //0
+					int group[] = {number[i], number[j], number[k]};
+					ArrayList<Integer> listCom = new ArrayList<>();
+					for(int g : group) {   //삼충사 리스트에 넣기
+						listCom.add(g);
+					}
+					int sum = 0;
+					System.out.println(listCom.size());
+					for(Integer num : listCom) {
+						System.out.println("num : " + num);
+						sum += num;
+					}
+					System.out.println();
+					if(sum == 0) {
+						System.out.println("sum : " + sum);
+						com.add(listCom);
+					}
 				}
 			}
-			int sum = 0;
-			for(Integer num : listCom) {
-				System.out.println("num : " + num);
-				sum += num;
-			}
-			System.out.println();
-			if(sum == 0) {
-				System.out.println("sum : " + sum);
-				com.add(listCom);
-			}
-			
 		}
         int answer = com.size();
         return answer;
