@@ -9,7 +9,7 @@ public class Solution1 {
 		return 0;
 	}
 	public static void main(String[] args) {
-		int[] number = {-2, 3, 0, 2, -5};
+		int[] number = {-2, 3, 0, 2, -5};  
 		
 	}
 }
