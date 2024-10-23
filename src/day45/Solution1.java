@@ -6,7 +6,7 @@ public class Solution1 {
 	public int comb(int[] number) {
 		int n = number.length-1;
 		int r = 3;
-		
+		return 0;
 	}
 	public static void main(String[] args) {
 		int[] number = {-2, 3, 0, 2, -5};
