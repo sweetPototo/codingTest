@@ -22,7 +22,7 @@ public class Solution {
 	
 	public static void main(String[] args) {
 		String sl = solution("a   B z", 25);
-		System.out.println(sl);
+		System.out.println(sl); 
 	}
 
 }
