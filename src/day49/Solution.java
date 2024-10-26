@@ -4,12 +4,16 @@ public class Solution {
 	public static char cal(char sp, int n) {
 		if(sp >= 65 && sp <= 90) { //대문자 65~90
 			sp += n;
-			sp = (char)(64 + (n - (90 - (sp - n))));
+			if(sp > 90) {
+				sp = (char)(64 + (n - (90 - (sp - n))));
+			}
 		}else if(sp >= 97 && sp <= 122) {  //소문자 97 ~ 122
 			sp += n;
-			sp = (char)(96 + (n - (122 - (sp - n))));
+			if (sp > 122) {
+				sp = (char)(96 + (n - (122 - (sp - n))));
+			}
 		}
-		return sp;
+       return sp;
 	}
 
 	public static String solution(String s, int n) {
@@ -25,7 +29,7 @@ public class Solution {
     }
 	
 	public static void main(String[] args) {
-		String sl = solution("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1);
+		String sl = solution("Z", 7);
 		System.out.println(sl);  
 		
 	}
