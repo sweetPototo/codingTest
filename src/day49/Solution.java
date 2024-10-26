@@ -2,18 +2,22 @@ package day49;
 
 public class Solution {
 	public static char cal(char sp, int n) {
-		if(sp > 90 && sp < 97)
+		if(sp >= 65 && sp <= 90) { //대문자 65~90
+			sp += n;
 			sp = (char)(64 + (n - (90 - (sp - n))));
-		else if(sp > 122)
+		}else if(sp >= 97 && sp <= 122) {  //소문자 97 ~ 122
+			sp += n;
 			sp = (char)(96 + (n - (122 - (sp - n))));
+		}
 		return sp;
 	}
 
 	public static String solution(String s, int n) {
 		char[] sp = s.toCharArray();
 		for(int i=0; i<sp.length; ++i) {
-			if(sp[i] == ' ') continue;
-			sp[i] += n;
+			if(sp[i] == ' ') {
+				continue;
+			}
 			sp[i] = cal(sp[i], n);
 		}
         String answer = String.valueOf(sp);
@@ -21,7 +25,7 @@ public class Solution {
     }
 	
 	public static void main(String[] args) {
-		String sl = solution("a   B z", 25);
+		String sl = solution("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1);
 		System.out.println(sl);  
 		
 	}
