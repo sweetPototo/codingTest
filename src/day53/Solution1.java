@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class Solution {
+public class Solution1 {
 	
 	public static String[] solution(String[] strings, int n) {
 		HashMap<String, String> stringMap = new HashMap<>();
