@@ -29,6 +29,6 @@ public class Solution1 {
 	}
 
 	public static void main(String[] args) {
-		Arrays.stream(solution(new String[] {"abce", "abcd", "cdx"}, 2)).forEach(System.out::println);;
+		Arrays.stream(solution(new String[] {"abce", "abcd", "cdx"}, 2)).forEach(System.out::println);
 	}
 }
