@@ -3,28 +3,61 @@ package day53;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 
 public class Solution2 {
 	public static String[] solution(String[] strings, int n) {
-		List<HashMap<String, String>> keyList = new ArrayList<>(); //map으로 key, value 지정해서 list에 저장
+		List<String> stringList = new ArrayList<>();
 		for(String s : strings) {
-			HashMap<String, String> stringMap = new HashMap<>();
-			String sortKey = String.valueOf(s.charAt(n));
-			stringMap.put(sortKey, s);  //n번째 문자 : 해당 단어
-			keyList.add(stringMap);
+			stringList.add(s);
 		}
-		keyList.sort((map1, map2) -> {
-			String key1 = map1.keySet().iterator().next();
-			String key2 = map2.keySet().iterator().next();
-			return key1.compareTo(key2);
+		//람다로 구현
+		stringList.sort((o1, o2) -> {
+			if(o1.charAt(n) > o2.charAt(n)) { //n의 아스키 코드값이 더 크면
+				return 1;
+			}else if(o1.charAt(n) == o2.charAt(n)) {  //n의 아스키 코드값이 같으면
+				int lenght = Math.min(o1.length(), o2.length());
+				for(int i=0; i<lenght; ++i) {
+					if(o1.charAt(i) > o2.charAt(i)) {
+						return 1;
+					}else if(o1.charAt(i) == o2.charAt(i)) {
+						continue;
+					}else {
+						return -1;
+					}
+				}
+			}else {  //n의 아스키값이 더 작으면
+				return -1;
+			}
+			
+			return 0; //두 문자열이 완벽하게 일치
 		});
-		String[] result = new String[strings.length];
-		for(int i=0; i<result.length; ++i) {
-			//result[i] = keyList.get(i)
-		}
-		return keyList.toArray(new String[keyList.size()]);
+		
+		//익명클래스로 구현
+//		stringList.sort(new Comparator<String>() {
+//			@Override
+//			public int compare(String o1, String o2) {
+//				if(o1.charAt(n) > o2.charAt(n)) { //n의 아스키 코드값이 더 크면
+//					return 1;
+//				}else if(o1.charAt(n) == o2.charAt(n)) {  //n의 아스키 코드값이 같으면
+//					int lenght = Math.min(o1.length(), o2.length());
+//					for(int i=0; i<lenght; ++i) {
+//						if(o1.charAt(i) > o2.charAt(i)) {
+//							return 1;
+//						}else if(o1.charAt(i) == o2.charAt(i)) {
+//							continue;
+//						}else {
+//							return -1;
+//						}
+//					}
+//				}else {  //n의 아스키값이 더 작으면
+//					return -1;
+//				}
+//				
+//				return 0; //두 문자열이 완벽하게 일치
+//			}
+//		});
+		return stringList.toArray(new String[stringList.size()]);
 	}
 	public static void main(String[] args) {
 		Arrays.stream(solution(new String[] {"abce", "cdx", "abcd"}, 2)).forEach(System.out::println);
