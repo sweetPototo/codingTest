@@ -26,11 +26,12 @@ public class Solution2 {
 						return -1;
 					}
 				}
-			}else {  //n의 아스키값이 더 작으면
+			}else if(o1.charAt(n) < o2.charAt(n)){  //n의 아스키값이 더 작으면
 				return -1;
 			}
 			
 			return 0; //두 문자열이 완벽하게 일치
+			
 		});
 		
 		//익명클래스로 구현
